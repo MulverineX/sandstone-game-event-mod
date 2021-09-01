@@ -1,1 +1,0 @@
-{"name":"test","event":"minecraft:block_destroy","function":"game-event-mod:destroy","conditions":[{"condition":"minecraft:entity_properties","entity":"this","predicate":{"type":"minecraft:player"}}]}
