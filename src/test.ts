@@ -7,7 +7,7 @@ GameEvent('test', 'minecraft:block_destroy', {
     predicate: {
        type: 'minecraft:player'
     }
- }, (entity, pos) => MCFunction('destroy', () => {
-    execute.as(entity).run.say('hello');
+ }, (pos, entity) => MCFunction('destroy', () => {
     setblock(pos, 'minecraft:acacia_button');
+    execute.as(entity).run.say('hello');
  }))
