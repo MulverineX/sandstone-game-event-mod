@@ -36,13 +36,11 @@ export const GameEventResource = CustomResource('GameEvent', {
 
 /**
  * Object to be exported to JSON for Event.
- * @param name Event hook ID
  * @param event Event ID
  * @param conditions Predicate conditions
  * @param function Name of MCFunction that's ran
  */
 export type GameEventJSON = {
-   name: string,
    event: GameEventID,
    conditions?: PredicateCondition[],
    function: string
@@ -54,10 +52,10 @@ export class GameEventInstance {
    _resourceInstance: CustomResourceInstance<'GameEvent','json'>
 
    constructor (name: string, event: GameEventID, conditions: false | PredicateCondition[], run: string) {
-      const data = {
-         name, event,
+      const data: GameEventJSON = {
+         event,
          function: run
-      } as GameEventJSON;
+      };
 
       if (conditions) data.conditions = conditions;
 
