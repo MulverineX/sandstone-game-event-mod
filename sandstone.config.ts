@@ -2,7 +2,7 @@ import type { SandstoneConfig } from 'sandstone'
 
 export default {
   name: 'game-event-mod',
-  description: [ 'A ', { text: 'Sandstone', color: 'gold' }, ' data pack.' ],
+  description: 'Game Event Mod Library',
   formatVersion: 7,
   namespace: 'game-event-mod',
   packUid: '_isPtrS6',

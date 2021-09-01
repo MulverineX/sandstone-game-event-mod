@@ -1,13 +1,6 @@
 {
   "pack": {
     "pack_format": 7,
-    "description": [
-      "A ",
-      {
-        "text": "Sandstone",
-        "color": "gold"
-      },
-      " data pack."
-    ]
+    "description": "Game Event Mod Library"
   }
 }

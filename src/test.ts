@@ -1,4 +1,4 @@
-import { execute, MCFunction, setblock } from "sandstone";
+import { execute, MCFunction, summon } from "sandstone";
 import GameEvent from "./main";
 
 GameEvent('test', 'minecraft:block_destroy', {
@@ -8,6 +8,6 @@ GameEvent('test', 'minecraft:block_destroy', {
        type: 'minecraft:player'
     }
  }, (pos, entity) => MCFunction('destroy', () => {
-    setblock(pos, 'minecraft:acacia_button');
+    summon('minecraft:pig', pos);
     execute.as(entity).run.say('hello');
  }))

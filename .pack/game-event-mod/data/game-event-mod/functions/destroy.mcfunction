@@ -1,2 +1,2 @@
-setblock ~ ~ ~ minecraft:acacia_button
+summon minecraft:pig ~ ~ ~
 execute as @s run say hello
