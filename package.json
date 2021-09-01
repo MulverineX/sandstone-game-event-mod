@@ -1,6 +1,6 @@
 {
   "name": "sandstone-game-event-mod",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Sandstone data pack library depending on a mod for utilizing Game Events",
   "main": "build/index.js",
   "types": "build/index.d.ts",
