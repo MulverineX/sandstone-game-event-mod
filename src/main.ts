@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { CustomResource, LiteralUnion, MCFunctionInstance, PredicateCondition, PredicateInstance, SelectorClass, rel, Coordinates, Selector } from 'sandstone';
-import { CustomResourceInstance } from 'sandstone/resources/Custom';
+import { CustomResourceFactory, CustomResourceInstance } from 'sandstone/resources/Custom';
 
 /**
  * GameEvent ID https://minecraft.gamepedia.com/Sculk_Sensor#Vibration_frequencies 
@@ -28,11 +28,33 @@ type RunFunction = string | MCFunctionInstance | ((pos: PositionTarget, entity: 
 /**
  * Exporter of GameEvent JSON files
  */
-export const GameEventResource = CustomResource('GameEvent', {
+/*export const GameEventResource = CustomResource('GameEvent', {
    dataType: 'json',
    extension: 'json',
-   save: ({ packName, saveLocation /* , namespace */ }) => path.join(saveLocation, packName + '/data', 'game-event-mod' /* namespace */, 'game_events')
-});
+   save: ({ packName, saveLocation, namespace }) => path.join(saveLocation, packName + '/data', namespace, 'game_events')
+});*/
+
+const GameEventNamespaces: Record<string, CustomResourceFactory<string, 'json'>> = {};
+
+function GameEventNamespace(name: string) {
+   let namespace = 'default';
+   let _name = name;
+
+   if (name.indexOf(':') !== -1) {
+      const split = name.split(':');
+      namespace = split[0];
+      _name = split[1];
+   }
+
+   if (!GameEventNamespaces[namespace]) {
+      GameEventNamespaces[namespace] = CustomResource(`GameEvent.${namespace}`, {
+         dataType: 'json',
+         extension: 'json',
+         save: ({ packName, saveLocation }) => path.join(saveLocation, packName + '/data', namespace, 'game_events')
+      });
+   }
+   return [ GameEventNamespaces[namespace], _name];
+}
 
 /**
  * Object to be exported to JSON for Event.
@@ -49,7 +71,7 @@ export type GameEventJSON = {
 export class GameEventInstance {
    name: string
    _gameEventJSON: GameEventJSON
-   _resourceInstance: CustomResourceInstance<'GameEvent','json'>
+   _resourceInstance: CustomResourceInstance<string, 'json'>
 
    constructor (name: string, event: GameEventID, conditions: false | PredicateCondition[], run: string) {
       const data: GameEventJSON = {
@@ -61,7 +83,9 @@ export class GameEventInstance {
 
       this.name = name;
       this._gameEventJSON = data;
-      this._resourceInstance = GameEventResource.create(name, data);
+
+      const factory = GameEventNamespace(name);
+      this._resourceInstance = (factory[0] as CustomResourceFactory<string, 'json'>).create(factory[1] as string, data);
    }
 }
 
