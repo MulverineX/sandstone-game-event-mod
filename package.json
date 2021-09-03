@@ -1,7 +1,7 @@
 {
   "name": "sandstone-game-event-mod",
-  "version": "0.1.1",
-  "description": "A Sandstone data pack library depending on a mod for utilizing Game Events",
+  "version": "0.1.2",
+  "description": "A Sandstone datapack library depending on a mod for utilizing Game Events",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "license": "CC0-1.0",
   "peerDependencies": {
-    "sandstone": "^0.14.0-alpha.1"
+    "sandstone": "^0.14.0-alpha.4"
   },
   "devDependencies": {
     "@types/node": "^16.7.6",

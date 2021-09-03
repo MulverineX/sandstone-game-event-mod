@@ -74,7 +74,7 @@ export class GameEventInstance {
 function GameEvent(name: string, event: GameEventID, run: RunFunction): GameEventInstance;
 function GameEvent(name: string, event: GameEventID, conditions: PredicateType | PredicateType[], run: RunFunction): GameEventInstance;
 function GameEvent(name: string, event: GameEventID, arg2: RunFunction | PredicateType | PredicateType[], arg3?: RunFunction): GameEventInstance {
-   let conditions = (arg3 ? arg2 : false) as false | PredicateType | PredicateType[]
+   let conditions = (arg3 ? arg2 : false) as false | PredicateType | PredicateType[];
 
    if (conditions) {
       if (!Array.isArray(conditions)) conditions = [ conditions ];
@@ -95,7 +95,7 @@ function GameEvent(name: string, event: GameEventID, arg2: RunFunction | Predica
    let run = (arg3 || arg2) as RunFunction;
 
    if (typeof run !== 'string') {
-      if ((run as MCFunctionInstance).name) run = (run as MCFunctionInstance).name;
+      if (run.name) run = run.name;
 
       else run = (run(rel(0, 0, 0), Selector('@s')) as MCFunctionInstance).name;
    } 
