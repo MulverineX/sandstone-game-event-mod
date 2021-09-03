@@ -1,4 +1,5 @@
 import * as path from 'path';
+import { env } from 'process';
 import { CustomResource, LiteralUnion, MCFunctionInstance, PredicateCondition, PredicateInstance, SelectorClass, rel, Coordinates, Selector } from 'sandstone';
 import { CustomResourceFactory, CustomResourceInstance } from 'sandstone/resources/Custom';
 
@@ -37,7 +38,7 @@ type RunFunction = string | MCFunctionInstance | ((pos: PositionTarget, entity: 
 const GameEventNamespaces: Record<string, CustomResourceFactory<string, 'json'>> = {};
 
 function GameEventNamespace(name: string) {
-   let namespace = 'default';
+   let namespace = env.NAMESPACE;
    let _name = name;
 
    if (name.indexOf(':') !== -1) {

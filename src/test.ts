@@ -1,7 +1,7 @@
 import { execute, MCFunction, summon } from "sandstone";
 import GameEvent from "./main";
 
-GameEvent('test:foo', 'minecraft:block_destroy', {
+GameEvent('foo', 'minecraft:block_destroy', {
       condition: 'minecraft:entity_properties',
       entity: 'this',
       predicate: {
