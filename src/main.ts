@@ -35,9 +35,9 @@ type RunFunction = string | MCFunctionInstance | ((pos: PositionTarget, entity: 
    save: ({ packName, saveLocation, namespace }) => path.join(saveLocation, packName + '/data', namespace, 'game_events')
 });*/
 
-const GameEventNamespaces: Record<string, CustomResourceFactory<string, 'json'>> = {};
+export const GameEventNamespaces: Record<string, CustomResourceFactory<string, 'json'>> = {};
 
-function GameEventNamespace(name: string) {
+export function GameEventNamespace(name: string) {
    let namespace = env.NAMESPACE;
    let _name = name;
 
