@@ -1,7 +1,7 @@
 # Sandstone Game Event Mod Library (WIP)
 This library depends on the host running a mod that adds data-driven game events in [this format](https://github.com/lolgeny/femtoblaze/wiki/Game-events).
 
-[femtoblaze](https://github.com/lolgeny/femtoblaze) implements this feature.
+[picoblaze](https://github.com/lolgeny/picoblaze) implements this feature.
 
 To build the datapack, run:
 ```ts
